@@ -1,7 +1,7 @@
 # CyberCipher
 CyberCipher Web is a web-based encryption and decryption tool that provides a user-friendly interface for various cryptographic methods. This project aims to offer a platform for exploring and utilizing different encryption techniques for both text and files.
 ![image](https://github.com/user-attachments/assets/fd3e4ac6-df6a-4d1a-b0e0-cd416a2351b9)
-![image](https://github.com/user-attachments/assets/e3aac111-8461-4127-8e20-bf4b1f20ef26)
+![Screenshot (1535)](https://github.com/user-attachments/assets/cbb8235e-3445-42ab-a76b-be40eba76f3c)
 ![image](https://github.com/user-attachments/assets/4bd76a5e-9854-4c29-996e-a3f6a0186233)
 
 
