@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberCipher Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpeg" href="cybercipher_imresizer.jpg">
+</head>
+<body class="bg-gradient-to-r from-blue-900 to-blue-900 min-h-screen flex flex-col items-center justify-center py-10 font-inter">
+
+    <div id="creditModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-white p-8 rounded-lg shadow-xl max-w-2xl w-full text-center transform transition-all duration-300 scale-95 opacity-0" id="creditModalContent">
+
+            <div class="flex justify-center mb-4">
+            <img src="cybercipher.jpg" alt="Logo" class="w-24 h-24 rounded-full shadow-md object-cover">
+          </div>
+
+          <h2 class="text-3xl font-bold text-blue-700 mb-4" style="font-family: 'Orbitron', sans-serif;">
+            Welcome to CyberCipher Web!
+          </h2>
+            
+            <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+                Explore various encryption methods including Caesar Cipher, Mirror Shift Cipher, Advanced Shift Cipher, Vigenère Cipher, and AES.
+            </p>
+            <p class="text-gray-600 text-md font-medium mb-2">Developed with dedication by:</p>
+            <ul class="list-none p-0 mb-6 text-gray-800 font-semibold text-lg">
+                <li>1. Arzadon, Christian Andrei</li>
+                <li>2. Castro, John Paul</li>
+                <li>3. Domingo, Fritzjerald</li>
+                <li>4. Dono, Carl Dominic</li>
+                <li>5. Pascua, Janssenn Dave</li>
+                <li>6. Rubio, Denniz Mitchell</li>
+                <li>7. Tabios, Jann Gio</li>
+            </ul>
+            <button id="closeCreditModal" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full focus:outline-none focus:shadow-outline text-lg shadow-md">
+                Get Started!
+            </button>
+            <p class="text-gray-600 text-md mt-7 mb-3">
+                GitHub Source Code: <a href="https://github.com/Arzzzzy/CyberCipher" class="text-blue-500 hover:text-blue-700 transition-colors duration-200">https://github.com/Arzzzzy/CyberCipher</a>
+            </p>
+            <p class="text-black-400 text-md mt-3 mb-6">
+                Fullfiling the requirements for Cmpsc147 Information Assurance & Security
+            </p>
+        </div>
+    </div>
+
+    <div id="encryptionInfoModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-white p-8 rounded-lg shadow-xl max-w-4xl w-full text-center transform transition-all duration-300 scale-95 opacity-0" id="encryptionInfoModalContent">
+            <h2 class="text-3xl font-poppins font-bold text-blue-700 mb-4">How It Works: <span id="encryptionInfoTitle" class="text-gray-800"></span></h2>
+            <div id="encryptionInfoContent" class="text-gray-700 text-lg mb-6 leading-relaxed text-left">
+                </div>
+            <button id="closeEncryptionInfoModal" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full focus:outline-none focus:shadow-outline text-lg shadow-md">
+                Close
+            </button>
+        </div>
+    </div>
+    <h1 class="text-6xl font-poppins font-bold text-white mb-8 tracking-tight" style="font-family: 'Orbitron', sans-serif;">CyberCipher Web</h1>
+
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-8">
+        <section class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 w-full md:w-1/2 max-w-xl">
+            <h2 class="text-2xl font-poppins font-semibold text-gray-800 mb-4 tracking-tight flex justify-between items-center">
+                <span>Text Encryption</span>
+                <button id="showEncryptionInfoButton" class="text-blue-500 hover:text-blue-700 focus:outline-none" title="Learn more about this encryption type">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                </h2>
+            <div class="mb-4">
+                <label for="type" class="block text-gray-700 text-sm font-medium mb-2">Encryption Type:</label>
+                <select id="type" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 text-base leading-tight focus:outline-none focus:shadow-outline" onchange="toggleCipherOptionsVisibility();">
+                    <option value="Caesar">Caesar Cipher</option>
+                    <option value="ReverseCipher">Mirror Shift Cipher</option>
+                    <option value="DynamicShift">Dynamic Shift Cipher (Custom)</option>
+                    <option value="Vigenere">Vigenère Cipher</option>
+                    <option value="AES">AES (Advanced Encryption Standard)</option>
+                </select>
+            </div>
+            <div id="keyOptions" class="mb-4">
+                <label for="key" class="block text-gray-700 text-sm font-medium mb-2">Key (number):</label>
+                <input type="number" id="key" placeholder="Enter key" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 text-base leading-tight focus:outline-none focus:shadow-outline" min="-25" max="25">
+            </div>
+            
+            <div id="caesarOptions" class="mb-4 bg-gray-50 p-4 rounded-md" style="display: none;">
+                <h3 class="text-md font-semibold text-gray-800 mb-2">Caesar Enhancements:</h3>
+                <div class="flex items-center justify-between mb-2">
+                    <label for="enableCaesarShuffle" class="text-gray-700 text-sm font-medium cursor-pointer">Enable Character Shuffling (Post-Shift)</label>
+                    <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" id="enableCaesarShuffle" name="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" onchange="updateSecurityDisplay()">
+                        <label for="enableCaesarShuffle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <label for="enableCaesarSymbolSub" class="text-gray-700 text-sm font-medium cursor-pointer">Enable Symbol Substitution (for common letters)</label>
+                    <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" id="enableCaesarSymbolSub" name="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" onchange="updateSecurityDisplay()">
+                        <label for="enableCaesarSymbolSub" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="vigenereKeyOptions" class="mb-4" style="display: none;">
+                <label for="vigenereKey" class="block text-gray-700 text-sm font-medium mb-2">Vigenère Key (text):</label>
+                <input type="text" id="vigenereKey" placeholder="Enter Vigenère text key" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 text-base leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            
+            <div id="vigenereOptions" class="mb-4 bg-gray-50 p-4 rounded-md" style="display: none;">
+                <h3 class="text-md font-semibold text-gray-800 mb-2">Vigenère Enhancements:</h3>
+                <div class="flex items-center justify-between mb-2">
+                    <label for="enableVigenereAutoKey" class="text-gray-700 text-sm font-medium cursor-pointer">Enable Auto-Key (Uses plaintext for key extension)</label>
+                    <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" id="enableVigenereAutoKey" name="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" onchange="updateSecurityDisplay()">
+                        <label for="enableVigenereAutoKey" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <label for="enableVigenerePermutation" class="text-gray-700 text-sm font-medium cursor-pointer">Enable Block Permutation (Shuffles ciphertext blocks)</label>
+                    <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" id="enableVigenerePermutation" name="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" onchange="updateSecurityDisplay()">
+                        <label for="enableVigenerePermutation" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="saltOptions" class="mb-4" style="display: none;">
+                <div class="flex items-center justify-between">
+                    <label for="useSalt" class="text-gray-700 text-sm font-medium cursor-pointer">Use Salt (for Dynamic Shift)</label>
+                    <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" id="useSalt" name="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" onchange="toggleSaltInput()">
+                        <label for="useSalt" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                </div>
+                <input type="text" id="salt" placeholder="Enter salt (optional)" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 text-base leading-tight focus:outline-none focus:shadow-outline mt-2" style="display: none;">
+            </div>
+            
+            <div id="aesKeyOptions" class="mb-4" style="display: none;">
+                <div class="flex items-center justify-between">
+                    <label for="useAESKey" class="text-gray-700 text-sm font-medium cursor-pointer">Add a specific key for AES (64 characters hex for AES-256)</label>
+                    <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" id="useAESKey" name="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" onchange="toggleAESKeyInput()">
+                        <label for="useAESKey" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                </div>
+                <input type="text" id="aesKey" placeholder="Enter 64-character hex key" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 text-base leading-tight focus:outline-none focus:shadow-outline mt-2" style="display: none;">
+                <p class="text-xs italic text-gray-600 mt-1">Leaving the AES key blank will result in a randomly generated key.</p>
+            </div>
+            
+            <div id="aesOptions" class="mb-4 bg-gray-50 p-4 rounded-md" style="display: none;">
+                <h3 class="text-md font-semibold text-gray-800 mb-2">AES Enhancements:</h3>
+                <div class="flex items-center justify-between mb-2">
+                    <label for="enableAESRandomIV" class="text-gray-700 text-sm font-medium cursor-pointer">Enable Random IV (Highly Recommended for CBC)</label>
+                    <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" id="enableAESRandomIV" name="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" checked onchange="updateSecurityDisplay()">
+                        <label for="enableAESRandomIV" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <label for="enableAESHMAC" class="text-gray-700 text-sm font-medium cursor-pointer">Enable HMAC (Hash-based Message Authentication - for Data Integrity)</label>
+                    <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" id="enableAESHMAC" name="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" onchange="updateSecurityDisplay()">
+                        <label for="enableAESHMAC" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label for="text" class="block text-gray-700 text-sm font-medium mb-2">Enter Text:</label>
+                <textarea id="text" placeholder="Enter text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 text-base leading-tight focus:outline-none focus:shadow-outline"></textarea>
+            </div>
+            <div class="flex items-center justify-center space-x-4">
+                <button onclick="encryptText()" class="bg-green-500 hover:bg-green-700 text-white font-medium py-3 px-6 rounded focus:outline-none focus:shadow-outline text-lg">Encrypt Text</button>
+                <button onclick="decryptText()" class="bg-blue-500 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded focus:outline-none focus:shadow-outline text-lg">Decrypt Text</button>
+            </div>
+            <div class="mt-4 flex items-start w-full">
+                <p class="text-gray-600 text-base flex-shrink-0 mt-2">Result:</p>
+                <div class="result-container flex-grow ml-2">
+                    <span id="output" class="font-semibold text-base"></span>
+                </div>
+                <button id="copyButton" onclick="copyResult()" class="ml-2 text-gray-600 hover:text-gray-800 focus:outline-none flex-shrink-0" title="Copy Result">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <p id="copyMessage" class="text-sm text-green-500 mt-2 hidden transition-opacity duration-300 text-center mx-auto"></p>
+
+
+            <div class="mt-6">
+                <label class="block text-gray-700 text-sm font-medium mb-2">Security Level:</label>
+                <div class="w-full bg-gray-200 rounded-full h-4">
+                    <div id="securityProgressBar" class="bg-green-500 h-4 rounded-full transition-all duration-500 ease-in-out" style="width: 0%;"></div>
+                </div>
+                <span id="securityLevelText" class="block text-gray-600 text-sm mt-2 text-right font-semibold"></span>
+            </div>
+        </section>
+
+        <section class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 w-full md:w-1/2 max-w-xl" style="height: 250px;">
+            <h2 class="text-2xl font-poppins font-semibold text-gray-800 mb-2 tracking-tight">File Encryption</h2>
+            <p class="text-xs italic text-gray-600 mt-1 mb-4">The settings selected for text encryption will also apply to file encryption.</p>
+            <div class="mb-4">
+                <label for="file" class="block text-gray-700 text-sm font-medium mb-2">Select File:</label>
+                <input type="file" id="file" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 text-base leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="flex items-center justify-center space-x-4">
+                <button onclick="encryptFile()" class="bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded focus:outline-none focus:shadow-outline text-lg">Encrypt File</button>
+                <button onclick="decryptFile()" class="bg-red-500 hover:bg-red-700 text-white font-medium py-3 px-6 rounded focus:outline-none focus:shadow-outline text-lg">Decrypt File</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
