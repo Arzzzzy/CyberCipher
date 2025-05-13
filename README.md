@@ -9,16 +9,16 @@ CyberCipher Web is a web-based encryption and decryption tool that provides a us
 **Key Features**
 
 * **Text Encryption/Decryption:**
-    * Supports multiple encryption algorithms:
-        * **Caesar Cipher:** A simple substitution cipher.
-        * **Base64 Encoding:** Encodes data in Base64 format for safe transmission.
-        * **Mirror Shift Cipher:** A custom cipher that reverses the input and shifts characters.
-        * **Quantum Shift Cipher:** A custom cipher with dynamic character shifts and block reversal, offering higher security.
-    * Key-based encryption for applicable ciphers.
-    * Optional salt for the Quantum Shift Cipher to enhance security.
-    * Real-time result display.
-    * Copy result to clipboard functionality.
-    * Security level indicator for the selected cipher.
+     *Supports multiple encryption algorithms:
+     *Caesar Cipher: A simple substitution cipher.
+     *Mirror Shift Cipher: A custom cipher that reverses the input and shifts characters.
+     *Dynamic Shift Cipher: A custom cipher with dynamic character shifts and block reversal.
+     *Vigenère Cipher: A polyalphabetic substitution cipher with optional autokey and block permutation.
+     *AES-256-CBC: Advanced Encryption Standard with a 256-bit key in Cipher Block Chaining mode, with optional random IV and HMAC.
+ *Key-based encryption for applicable ciphers.
+ *Optional salt for the Dynamic Shift Cipher.
+ *Options for Vigenère cipher: autokey and block permutation.
+ *Options for AES: custom key (hexadecimal), random Initialization Vector (IV), and Hash-based Message Authentication Code (HMAC).
 
 * **File Encryption/Decryption:**
     * Supports encryption and decryption of files.
