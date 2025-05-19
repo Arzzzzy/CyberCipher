@@ -5,6 +5,9 @@ CyberCipher Web is a web-based encryption and decryption tool that provides a us
 ![image](https://github.com/user-attachments/assets/d0adbb41-44d1-4cdd-bbe8-43f8c18b3d84)
 ![Screenshot (1537)](https://github.com/user-attachments/assets/4807484c-5fb6-4c9f-9afd-750664547984)
 ![image](https://github.com/user-attachments/assets/9db5ff30-455e-4850-877c-028448facca7)
+![image](https://github.com/user-attachments/assets/56dab65b-efaf-49b0-a7b0-59f5a1f54e8e)
+
+
 
 
 **Key Features**
@@ -16,6 +19,7 @@ CyberCipher Web is a web-based encryption and decryption tool that provides a us
      * Dynamic Shift Cipher: A custom cipher with dynamic character shifts and block reversal.
      * Vigenère Cipher: A polyalphabetic substitution cipher with optional autokey and block permutation.
      * AES-256-CBC: Advanced Encryption Standard with a 256-bit key in Cipher Block Chaining mode, with optional random IV and HMAC.
+     * Location-Based (GeoAES) Encryption is a location-aware encryption method that restricts access to encrypted data based on the user’s physical location. I
  * Key-based encryption for applicable ciphers.
  * Optional salt for the Dynamic Shift Cipher.
  * Options for Vigenère cipher: autokey and block permutation.
